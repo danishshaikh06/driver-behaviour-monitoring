@@ -1,0 +1,5 @@
+# Defaults for webcam inference. Model identifiers are resolved by Ultralytics.
+camera_index: 0
+person_model: yolov8n.pt
+phone_model: yolov8s.pt
+confidence_threshold: 0.5

@@ -1,0 +1,6 @@
+# Supply a local dataset YAML path when invoking scripts/train.py.
+model: yolov10n.pt
+epochs: 200
+image_size: 640
+batch_size: 2
+workers: 2

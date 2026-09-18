@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local model weights and training outputs
+models/*
+!models/.gitkeep
+runs/
+*.pt
+*.onnx
+*.engine
+
+# Runtime artefacts
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
