@@ -45,3 +45,28 @@ python scripts/export.py --model models/best.pt --format onnx
 
 All training inputs are passed on the command line; no machine-specific dataset
 paths are stored in the repository.
+
+## Benchmarking
+
+The included benchmark runner measures model-only CPU inference and evaluates
+person and cell-phone detection on a reproducible 100-image subset of the COCO
+2017 validation set. It downloads the COCO annotations and selected images to
+the ignored `benchmarks/` directory.
+
+```bash
+pip install ultralytics pycocotools psutil pyyaml
+python scripts/benchmark.py --model yolov8n.pt --samples 100
+python scripts/benchmark.py --model yolov8s.pt --samples 100
+```
+
+Baseline results on an Intel Core i7-14700HX CPU at 640px input:
+
+| Model | FPS | Mean latency | Precision | Recall | F1 | mAP@50 | mAP@50-95 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| YOLOv8n | 28.52 | 35.07 ms | 58.22% | 37.46% | 45.59% | 46.76% | 33.47% |
+| YOLOv8s | 3.29 | 304.35 ms | 66.56% | 63.78% | 65.14% | 61.42% | 41.72% |
+
+These are combined metrics for the two classes and a small sampled subset; use
+the full COCO validation set and target deployment hardware for final model
+selection. Full webcam-pipeline FPS will also include MediaPipe, camera I/O,
+display, and alerting overhead.

@@ -5,6 +5,7 @@ __pycache__/
 .coverage
 htmlcov/
 .venv/
+.venv-benchmark/
 venv/
 
 # Local model weights and training outputs
@@ -14,6 +15,7 @@ runs/
 *.pt
 *.onnx
 *.engine
+benchmarks/
 
 # Runtime artefacts
 *.log
